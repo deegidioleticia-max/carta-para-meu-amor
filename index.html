@@ -1,1 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Uma mensagem para você ❤️</title>
 
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9ec4,#ffcce0);
+font-family:Arial;
+overflow:hidden;
+}
+
+.envelope{
+width:300px;
+height:200px;
+background:#ff4d88;
+position:relative;
+cursor:pointer;
+border-radius:10px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+width:0;
+height:0;
+border-left:150px solid transparent;
+border-right:150px solid transparent;
+border-bottom:100px solid #ff80aa;
+transition:0.6s;
+}
+
+.carta{
+position:absolute;
+background:white;
+width:260px;
+padding:20px;
+border-radius:10px;
+text-align:center;
+transform:translateY(40px);
+opacity:0;
+transition:0.6s;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.aberto:before{
+transform:rotateX(180deg);
+}
+
+.aberto .carta{
+transform:translateY(-60px);
+opacity:1;
+}
+
+h2{
+color:#ff4d88;
+}
+
+/* corações */
+
+.coracao{
+position:fixed;
+bottom:-10px;
+font-size:24px;
+animation:subir 4s linear infinite;
+}
+
+@keyframes subir{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="abrir()">
+
+<div class="carta">
+
+<h2>Para você ❤️</h2>
+
+<p>
+Eu quis fazer algo diferente para você.
+</p>
+
+<p>
+Porque desde que você entrou na minha vida, tudo ficou mais leve.
+</p>
+
+<p>
+E eu queria te falar uma coisa...
+</p>
+
+<p><b>Eu te amo demais!!! ❤️</b></p>
+
+</div>
+
+</div>
+
+<script>
+
+function abrir(){
+document.querySelector(".envelope").classList.toggle("aberto");
+soltarCoracoes();
+}
+
+function soltarCoracoes(){
+
+setInterval(function(){
+
+let coracao = document.createElement("div");
+coracao.className="coracao";
+coracao.innerHTML="❤️";
+
+coracao.style.left=Math.random()*100+"vw";
+coracao.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(coracao);
+
+setTimeout(()=>{
+coracao.remove();
+},4000);
+
+},300);
+
+}
+
+</script>
+
+</body>
+</html>
